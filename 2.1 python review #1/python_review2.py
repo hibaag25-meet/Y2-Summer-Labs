@@ -13,6 +13,10 @@ def add_likes(details_of_the_video) :
 		details_of_the_video["likes"] = int (likes + 1 )
 	return(details_of_the_video)
 
+adding_495_likes = input("do you want to add 494 likes ??")
+if adding_495_likes == "yes" :
+	details_of_the_video[likes] = 495
+
 
 def add_dislikes(details_of_the_video) :
 	if "dislikes" in details_of_the_video :
@@ -30,7 +34,3 @@ my_video=creating_video(title,description)
 comment_Question = input ("do you want add comment ?? ")
 if comment_Question == "yes" :
 	add_comment(my_video)
-
-adding_495_likes = input("do you want to add 494 likes ??")
-if adding_495_likes == "yes" :
-	my_video["likes"] = 49
