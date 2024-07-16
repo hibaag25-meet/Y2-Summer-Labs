@@ -1,61 +1,39 @@
 import random
 
-temperatures = []
+temperature = []
+GoodDaysCounter = 0
 
-days_of_the_week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+for _ in range(7):
+    RandomTemp = random.randint(26,40)
+    temperature.append(RandomTemp)
 
-even_temperature = []
-odd_temperature = []
+DaysOfTheWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
-avg_temp = []
-
-for i in range(7):
-    temperatures.append(random.randint(26, 41))
-print(temperatures)
-
-
-for temp in temperatures:
-    if temp % 2 == 1:
-        odd_temperature.append(temp)
-
-    else:
-        even_temperature.append(temp)
-
-good_days_count = 0 
+DaysWithEvenTemperature = []
 
 for i in range(7):
-    if temperatures[i] % 2 == 0: 
-        good_days_count = good_days_count +1
+    if temperature[i] % 2 == 0:
+        DaysWithEvenTemperature.append(DaysOfTheWeek[i])
 
-print ("the number of good days are: " , good_days_count)
-    
+HighestTemp = max(temperature)
+HighestTempIndex = temperature.index(HighestTemp)
 
-highest_temp = temperatures[0]
-highest_day = days_of_the_week[0]
+LowestTemp = min(temperature)
+LowestTempIndex = temperature.index(LowestTemp)
+
+AverageTemp = sum(temperature)/7
+
+AboveAvg = [temp for temp in temperature if temp > AverageTemp]
+
+print("The weather report")
 for i in range(7):
-    if highest_temp < temperatures[i]:
-        highest_temp = temperatures[i]
-        highest_day = days_of_the_week[i]
+    print(DaysOfTheWeek[i] + ":" + str(temperature[i]))
 
+print(f"Shelly has {GoodDaysCounter} good days")
+print(f"The hottest temperature is: {HighestTemp} on {DaysOfTheWeek[HighestTempIndex]}")
+print(f"The lowest temperature is {LowestTemp} on {DaysOfTheWeek[LowestTempIndex]}")
+print(f"The average temperature was: {AverageTemp}")
+print(f"Days above average: {AboveAvg}")
 
-print("highest temperature is: ",highest_temp)
-print("highest temperuture day is:", highest_day)
-
-
-
-lowest_temp = temperatures[0] 
-lowest_day = days_of_the_week[0]     
-for i in range(7):
-    if lowest_temp > temperatures[i]:
-        lowest_temp = temperatures[i]
-        lowest_day = days_of_the_week[i]
-
-print("lowest temperature is: ", lowest_temp)
-print("lowest temperature day is:", lowest_day)
-
-avg_temp = temperatures[0]
-for i in range[7]:
-    avg_temp=sum(temperatures)/ 7
-temperature / 7 = avg_temp
-
-print("The average temperatureis: ",avg_temp)
+temperature.sort()
+print(temperature)
