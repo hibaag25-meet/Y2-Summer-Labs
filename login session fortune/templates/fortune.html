@@ -1,12 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <title>Your Fortune</title>
+    <title>Login</title>
 </head>
 <body>
-    <h1>Your Fortune</h1>
-    <p>Your fortune is: {{ fortune }}</p>
-    <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    <h2>Login</h2>
+    <form method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="birth_month">Birth Month:</label>
+        <input type="text" id="birth_month" name="birth_month" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
-
