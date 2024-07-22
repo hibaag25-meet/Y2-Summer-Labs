@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session
 import pyrebase
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super-secret-key'
+
 
 Config = {
   "apiKey": "AIzaSyCwP032h6f8GACQJT9OSsFTMelb22rr3LI",
@@ -18,6 +19,29 @@ Config = {
 firebase = pyrebase.initialize_app(Config)
 auth = firebase.auth()
 
+@app.route('/')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/signin')
+def signin():
+    return render_template('signin.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html')
+
+@app.route('/display')
+def display():
+    return render_template('display.html')
+
+if __name__ == '__main__':
+    app.run(debug=True, port= 5004)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def signup():
@@ -29,8 +53,8 @@ def signup():
             session['user'] = user
             session['quotes'] = []
             return redirect('/home')
-        except Exception as e:
-            return e
+        except:
+            return "An error occurred. Please try again."
     return render_template('signup.html')
 
 
@@ -43,9 +67,6 @@ def signin():
             user = auth.sign_in_with_email_and_password(email, password)
             session['user'] = user
             session['quotes'] = []
-
-
-
             return redirect('/home')
         except:
             return "An error occurred. Please try again."
@@ -55,31 +76,21 @@ def signin():
 def signout():
     session.pop('user', None)
     return redirect('/signin')
-
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         quote = request.form['quote']
         session['quotes'].append(quote)
-        session.modified = True
-
-        quotes_list =  session['quotes']
-        print(session['quotes'])
-        return redirect(url_for('thanks'))
+        return redirect('/thanks')
     return render_template('home.html')
 
 @app.route('/thanks')
 def thanks():
-    print(session['quotes'])
     return render_template('thanks.html')
-
 @app.route('/display')
 def display():
-    print(session['quotes'])
-    return render_template('display.html', quotes=session['quotes'])
-if __name__ == '__main__':
-    app.run(debug=True, port= 5004)
-
+    quotes = session.get('quotes', [])
+    return render_template('display.html', quotes=quotes)
 
      
 
