@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+        body {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Lora', serif;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3; /* Dark blue color */
+            margin-bottom: 20px;
+            font-family: 'Lora', serif; /* Apply the new font to the heading */
+        }
+        p {
+            color: #004494; /* Darker blue color */
+            font-family: 'Lora', serif; /* Apply the new font to the paragraph */
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #007bff; /* Bright blue button */
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: 700;
+        }
+        button:hover {
+            background-color: #004494; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to TripTide</h1>
+        <p>Your ultimate travel companion</p>
+        <button onclick="window.location.href='{{ url_for('signin') }}'">Sign In</button>
+        <button onclick="window.location.href='{{ url_for('signup') }}'">Sign Up</button>
+    </div>
+</body>
+</html>

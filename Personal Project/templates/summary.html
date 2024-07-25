@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet"> <!-- Importing Lora font -->
+    <style>
+        body {
+            font-family: 'Lora', serif; /* Apply Lora font */
+            background-color: #ffffff; /* White background */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: #f8faff; /* Light blue background for container */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #007bff; /* Bright blue color */
+            margin-bottom: 20px;
+            font-family: 'Lora', serif; /* Apply Lora font to heading */
+        }
+        h2 {
+            color: #0056b3; /* Darker blue for the subtitle */
+            font-family: 'Lora', serif; /* Apply Lora font to subtitle */
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        strong {
+            color: #0056b3;
+        }
+        button {
+            background-color: #007bff; /* Bright blue button */
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: 700;
+        }
+        button:hover {
+            background-color: #004494; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Complete!</h1>
+        
+        <h2>Your Information</h2>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>Username:</strong> {{ username }}</p>
+        <p><strong>Location:</strong> {{ location }}</p>
+    
+        <h2>Selected Travel Information</h2>
+        <p><strong>Travel Dates:</strong> {{ travel_dates }}</p>
+        <p><strong>Selected Locations:</strong> {{ locations }}</p>
+    
+        <button onclick="window.location.href='{{ url_for('signup') }}'">Sign Up</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet"> <!-- Import Quicksand font -->
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif; /* Apply Quicksand font */
+            background-color: #ffffff; /* White background */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #0277bd; /* Dark Blue */
+            margin: 20px 0;
+        }
+        h2 {
+            color: #0288d1; /* Bright Blue */
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .hotel {
+            background-color: #f5f5f5; /* Light gray background for hotel info */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+        .hotel h3 {
+            color: #01579b; /* Slightly darker blue */
+            margin-top: 0;
+        }
+        .hotel p {
+            margin: 10px 0;
+            color: #555; /* Slightly lighter text color */
+        }
+        .hotel button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #039be5; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .hotel button:hover {
+            background-color: #0288d1; /* Darker blue on hover */
+        }
+        .back-to-options {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #039be5; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 25px; /* Increase border-radius for a more rounded, "cute" look */
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .back-to-options:hover {
+            background-color: #0288d1; /* Darker blue on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .signout {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #039be5; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 25px; /* Increase border-radius for a more rounded look */
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .signout:hover {
+            background-color: #0288d1; /* Darker blue on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        function bookFlight(time) {
+            alert("You have booked a flight at " + time + " from TLV to Paris.");
+        }
+
+        function bookHotel(hotelName) {
+            alert("You have booked a room at " + hotelName + ".");
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+    <h1>Accommodation</h1>
+
+    <h2>Book Flights</h2>
+    <button onclick="bookFlight('2:00 AM')">Book Flight at 2:00 AM</button>
+    <button onclick="bookFlight('6:00 PM')">Book Flight at 6:00 PM</button>
+    <button onclick="bookFlight('12:00 AM')">Book Flight at 12:00 AM</button>
+
+    <h2>Best Hotels in Paris</h2>
+    <div class="hotel">
+        <h3>Hotel Le Bristol Paris</h3>
+        <p>Rating: 9.5/10</p>
+        <p>A luxury hotel with a rich history, offering exquisite rooms and exceptional service.</p>
+        <button onclick="bookHotel('Hotel Le Bristol Paris')">Book Hotel Le Bristol Paris</button>
+    </div>
+
+    <div class="hotel">
+        <h3>The Ritz Paris</h3>
+        <p>Rating: 9.3/10</p>
+        <p>A legendary hotel known for its opulent accommodations and world-class amenities.</p>
+        <button onclick="bookHotel('The Ritz Paris')">Book The Ritz Paris</button>
+    </div>
+
+    <div class="hotel">
+        <h3>Shangri-La Hotel, Paris</h3>
+        <p>Rating: 9.1/10</p>
+        <p>A historic palace offering stunning views of the Eiffel Tower and elegant rooms.</p>
+        <button onclick="bookHotel('Shangri-La Hotel, Paris')">Book Shangri-La Hotel, Paris</button>
+    </div>
+
+    <h2>Best Hotels in Tokyo</h2>
+    <div class="hotel">
+        <h3>Aman Tokyo</h3>
+        <p>Rating: 9.4/10</p>
+        <p>Located in the Otemachi Tower, Aman Tokyo offers luxurious accommodations with stunning city views, a serene spa, and world-class dining options.</p>
+        <button onclick="bookHotel('Aman Tokyo')">Book Aman Tokyo</button>
+    </div>
+
+    <div class="hotel">
+        <h3>The Peninsula Tokyo</h3>
+        <p>Rating: 9.2/10</p>
+        <p>This prestigious hotel offers elegant rooms, a top-notch spa, and easy access to the Imperial Palace and other attractions. It's known for its impeccable service.</p>
+        <button onclick="bookHotel('The Peninsula Tokyo')">Book The Peninsula Tokyo</button>
+    </div>
+
+    <div class="hotel">
+        <h3>Park Hyatt Tokyo</h3>
+        <p>Rating: 9.0/10</p>
+        <p>Famous for its appearance in the movie "Lost in Translation," this hotel offers breathtaking views, luxurious amenities, and an exceptional level of comfort.</p>
+        <button onclick="bookHotel('Park Hyatt Tokyo')">Book Park Hyatt Tokyo</button>
+    </div>
+
+    <button class="back-to-options" onclick="window.location.href='{{ url_for('options') }}'">Back to options</button>
+    <button class="signout" onclick="window.location.href='{{ url_for('signout') }}'">Sign Out</button>
+</body>
+</html>

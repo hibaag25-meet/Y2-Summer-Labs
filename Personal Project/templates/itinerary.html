@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet"> <!-- Import Quicksand font -->
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif; /* Apply Quicksand font */
+            background-color: #e3f2fd; /* Light Blue background */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .itinerary {
+            padding: 20px;
+            background-color: #ffffff; /* White background for content area */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 900px;
+        }
+        h1 {
+            color: #0277bd; /* Dark Blue */
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0288d1; /* Bright Blue */
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .itinerary img {
+            width: 80%;
+            max-width: 500px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px; /* Rounded corners for images */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .itinerary p {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 600px;
+            color: #555; /* Slightly lighter text color */
+        }
+        .itinerary button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #039be5; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .itinerary button:hover {
+            background-color: #0288d1; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body class="itinerary">
+    <div class="itinerary">
+        <h1>Itinerary</h1>
+        <p>Welcome to your explore page.. find all the best areas depending on your travel location :)</p>
+
+        <h2>Paris</h2>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUQrz0fhhS8W9fs0H3z1c59FK5P-ToUEpYMg&s" alt="Eiffel Tower">
+            <p>
+                The Eiffel Tower is a must-visit landmark in Paris. It offers stunning views of the city, especially when lit up at night. Other popular attractions include the Louvre Museum, Notre-Dame Cathedral, and the charming Montmartre district. Visitors can also enjoy a relaxing stroll along the Seine River.
+            </p>
+        </div>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9JVNNWXUiITy8Ew8576lLaK4R2uNiRDCN7w&s" alt="Louvre Museum">
+            <p>
+                The Louvre Museum is the world's largest art museum and a historic monument in Paris. It is home to thousands of works of art, including the Mona Lisa and the Venus de Milo. The museum's stunning architecture and vast collection make it a must-see for art enthusiasts.
+            </p>
+        </div>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9404nzc2-iKcBGyci1nGbC8JtHhm_ysWqBw&s" alt="Notre-Dame Cathedral">
+            <p>
+                Notre-Dame Cathedral is a masterpiece of French Gothic architecture. Its intricate facades, impressive stained glass windows, and iconic towers are a sight to behold. The cathedral's history and beauty attract millions of visitors each year.
+            </p>
+        </div>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDc46alRDiL5O7-gXVLBrjVRYr7SYeF4blkQ&s" alt="Montmartre">
+            <p>
+                Montmartre is a historic district known for its artistic heritage, charming streets, and the stunning Sacré-Cœur Basilica. The area is filled with cafes, art studios, and street artists, offering a unique and vibrant atmosphere. It's a great place to explore on foot.
+            </p>
+        </div>
+
+        <h2>Tokyo</h2>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzS-flOb4hs-0UTOyjMdPM_6MwRgQ-8WMOsg&s" alt="Tokyo Tower">
+            <p>
+                Tokyo Tower is a popular landmark that offers panoramic views of the city. Other notable attractions include the historic Senso-ji Temple, the bustling Shibuya Crossing, and the serene Meiji Shrine. Visitors can also explore the vibrant neighborhoods of Harajuku and Akihabara.
+            </p>
+        </div>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQHd2bAwHGNuUjowpo54z3Kr8KWZbpKpB23A&s" alt="Senso-ji Temple">
+            <p>
+                Senso-ji Temple is Tokyo's oldest temple and a significant cultural landmark. The temple complex is always bustling with visitors and offers a glimpse into traditional Japanese architecture and culture. The surrounding streets are filled with shops and food stalls.
+            </p>
+        </div>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSk6oXRAckyEllhf7eVBiXAku9CaWeQPxvVg&s" alt="Shibuya Crossing">
+            <p>
+                Shibuya Crossing is one of the busiest pedestrian crossings in the world, known for its dazzling lights and energetic atmosphere. It's a symbol of modern Tokyo and a must-see for visitors. The area also boasts numerous shopping, dining, and entertainment options.
+            </p>
+        </div>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa4ZgLsdFVB6XhCHrBXv5J0-9J0cQolyMBrQ&s" alt="Meiji Shrine">
+            <p>
+                Meiji Shrine is a serene and spacious Shinto shrine dedicated to Emperor Meiji and Empress Shoken. It's located in a beautiful forested area, providing a peaceful retreat from the bustling city. The shrine is a popular spot for traditional Japanese weddings and cultural events.
+            </p>
+        </div>
+
+        <button onclick="window.location.href='{{ url_for('options') }}'">Back to options</button>
+        <button onclick="window.location.href='{{ url_for('signout') }}'">Sign Out</button>
+    </div>
+</body>
+</html>

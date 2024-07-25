@@ -12,12 +12,12 @@ Config = {
   "messagingSenderId": "573642124114",
   "appId": "1:573642124114:web:0e555e64e485e3f8b6688b",
   "measurementId": "G-V2Q8N1S62D" ,
-  "databaseURL": ""
+  "databaseURL": "https://authentication-lab-d7339-default-rtdb.europe-west1.firebasedatabase.app/"
 }
 
 firebase = pyrebase.initialize_app(Config)
 auth = firebase.auth()
-
+db = firebase.database()
 
 @app.route('/', methods=['GET', 'POST'])
 def signup():
@@ -63,7 +63,6 @@ def home():
         session['quotes'].append(quote)
         session.modified = True
 
-        quotes_list =  session['quotes']
         print(session['quotes'])
         return redirect(url_for('thanks'))
     return render_template('home.html')

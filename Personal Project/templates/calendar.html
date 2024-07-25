@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js'></script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif; /* Apply Quicksand font */
+            background-color: #ffffff; /* White background */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #0277bd; /* Dark Blue */
+            margin: 20px 0;
+        }
+        p {
+            color: #555; /* Slightly lighter text color */
+            margin-bottom: 20px;
+        }
+        #calendar {
+            margin: 20px auto;
+            max-width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        button {
+            background-color: #0277bd; /* Dark Blue */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #01579b; /* Darker Blue */
+        }
+    </style>
+</head>
+<body>
+    <h1>Travel Calendar</h1>
+    <p>Pick your travel date and manage your events</p>
+    <div id='calendar'></div>
+    
+    <button onclick="window.location.href='{{ url_for('options') }}'">Back to options</button>
+    <button onclick="window.location.href='{{ url_for('signout') }}'">Sign Out</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'en',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                selectable: true,
+                editable: true,
+                dateClick: function(info) {
+                    var dateStr = prompt('Enter a title for your event:');
+                    if (dateStr) {
+                        calendar.addEvent({
+                            title: dateStr,
+                            start: info.dateStr,
+                            allDay: true
+                        });
+                    }
+                },
+                select: function(info) {
+                    var title = prompt('Enter a title for your event:');
+                    if (title) {
+                        calendar.addEvent({
+                            title: title,
+                            start: info.startStr,
+                            end: info.endStr
+                        });
+                    }
+                },
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2024-07-01'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2024-07-05',
+                        end: '2024-07-07'
+                    }
+                ]
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
