@@ -63,13 +63,9 @@
         <h1>Booking Complete!</h1>
         
         <h2>Your Information</h2>
-        <p><strong>Email:</strong> {{ email }}</p>
-        <p><strong>Username:</strong> {{ username }}</p>
-        <p><strong>Location:</strong> {{ location }}</p>
-    
-        <h2>Selected Travel Information</h2>
-        <p><strong>Travel Dates:</strong> {{ travel_dates }}</p>
-        <p><strong>Selected Locations:</strong> {{ locations }}</p>
+        <p><strong>Email:</strong> {{ info["email"] }}</p>
+        <p><strong>Username:</strong> {{ info["username"] }}</p>
+        <p><strong>Location:</strong> {{ info["location"] }}</p>
     
         <button onclick="window.location.href='{{ url_for('signup') }}'">Sign Up</button>
     </div>

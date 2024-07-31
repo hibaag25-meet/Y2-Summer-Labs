@@ -1,62 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TripTide Options</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet"> <!-- Import Quicksand font -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
-
         body {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Lora', serif;
+            font-family: 'Quicksand', sans-serif; /* Apply Quicksand font */
+            background-color: #e3f2fd; /* Light Blue background */
             color: #333;
             text-align: center;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-            padding: 30px;
-            border-radius: 12px;
+            padding: 20px;
+            background-color: #ffffff; /* White background for content area */
+            border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
         }
         h1 {
-            color: #0056b3; /* Dark blue color */
+            color: #0277bd; /* Dark Blue */
             margin-bottom: 20px;
-            font-family: 'Lora', serif; /* Apply the new font to the heading */
         }
         button {
-            background-color: #007bff; /* Bright blue button */
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #039be5; /* Blue color */
             color: white;
             border: none;
-            padding: 12px;
-            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
-            border-radius: 6px;
-            margin-top: 15px;
-            width: 100%;
-            font-weight: 700;
+            font-weight: 500;
         }
         button:hover {
-            background-color: #004494; /* Darker blue on hover */
+            background-color: #0288d1; /* Darker blue on hover */
+        }
+        .signout-button {
+            background-color: #ff5252; /* Red color for sign-out button */
+            margin-top: 30px;
+        }
+        .signout-button:hover {
+            background-color: #ff1744; /* Darker red on hover */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>TripTide Options</h1>
+        <h1>Options</h1>
         <button onclick="window.location.href='{{ url_for('calendar') }}'">Go to Calendar</button>
         <button onclick="window.location.href='{{ url_for('itinerary') }}'">Go to Itinerary</button>
         <button onclick="window.location.href='{{ url_for('accommodation') }}'">Go to Accommodation</button>
-        <button onclick="window.location.href='{{ url_for('summary') }}'">Click to finalize booking</button>
+        <button onclick="window.location.href='{{ url_for('summary') }}'">complete booking</button>
+
+        <button class="signout-button" onclick="window.location.href='{{ url_for('signout') }}'">Sign Out</button>
     </div>
 </body>
 </html>

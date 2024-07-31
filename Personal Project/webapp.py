@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask import session as login_session
 import pyrebase
 
 firebaseConfig = {
@@ -26,9 +27,9 @@ def signup():
         username = request.form['username']
         password = request.form['password']
         location = request.form['location']
-        user = auth.create_user_with_email_and_password(email, password)
+        login_session["user"] = auth.create_user_with_email_and_password(email, password)
         
-        ref = db.child('users').child(user['localId'])
+        ref = db.child('users').child(login_session["user"]['localId'])
         ref.set({
             'username': username,
             'location': location,
@@ -47,7 +48,12 @@ def signin():
         email = request.form['email']
         password = request.form['password']
         try:
-            user = auth.sign_in_with_email_and_password(email, password)
+            login_session["user"] = auth.sign_in_with_email_and_password(email, password)
+            db.child("users").child(login_session["user"]['localId']).set({
+                "username": request.form["username"],
+                "email": request.form["email"],
+                "location": request.form["location"]
+                })
             return redirect(url_for('options'))
         except:
             return 'Authentication failed'
@@ -73,29 +79,15 @@ def signout():
 @app.route('/accommodation')
 def accommodation():
     return render_template('accommodation.html')
+    
 @app.route('/summary')
 def summary():
+    print(db.child("users").child(login_session["user"]["localId"]).get().val())
+    return render_template("summary.html", info=db.child("users").child(login_session["user"]["localId"]).get().val())
 
-    UID = ref['user']['localId']
-    user = db.child("Users").child(UID).get().val()
-    return render_template("display_user.html", email=user["email"])
-
-    email = request.args.get('email')
-    username = request.args.get('username')
-    location = request.args.get('location')
-    travel_dates = request.args.get('travel_dates')
-    locations = request.args.get('locations')
-
-    return render_template('summary.html', 
-                           email=user["email"], 
-                           username=user["username"], 
-                           location=user["location"], 
-                           travel_dates=user["travel_dates"], 
-                           locations=user["locations"]
-@app.route('/options')
 @app.route('/options')
 def options():
-    return render_template('options.html')
+        return render_template('options.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=50011)
